@@ -1,5 +1,5 @@
-SSHit
-=====
+SSHout: Let is all out.
+=======================
 
 Want to share a terminal session with someone? ::
 
