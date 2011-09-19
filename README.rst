@@ -20,7 +20,6 @@ When you're done having someone in your system, hit Control-C, and the server
 is gone.
 
 
-
 Powered By
 ----------
 
