@@ -7,9 +7,14 @@ sshit.core
 This module contains the primary functionality of sshit.
 """
 
-# from collections import namedtuple
+import random
 
-# Dependency = namedtuple('Dependency', ['name', 'type'])
+ALPHABET = 'abcdefghijklmnoprstuvwyxzABCDEFGHIJKLMNOPRSTUVWXYZ'
 
-# dependencies = Dependency
+
+def random_password(length=6):
+    """Returns a random ASCII password of given length."""
+
+    p = ''.join([random.choice(ALPHABET) for i in range(length)])
+    return p
 
