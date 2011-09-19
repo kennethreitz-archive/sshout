@@ -22,8 +22,6 @@ required = [
 ]
 
 
-
-
 if sys.version_info[0:2] < (2, 6):
     required.append('simplejson')
 
