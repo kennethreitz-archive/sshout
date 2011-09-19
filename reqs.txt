@@ -1,0 +1,6 @@
+distribute==0.6.19
+ipython==0.11
+wsgiref==0.1.2
+zope.interface==3.7.0
+pyasn1
+pycrypto
