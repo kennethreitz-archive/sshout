@@ -26,14 +26,14 @@ if sys.version_info[0:2] < (2, 6):
     required.append('simplejson')
 
 setup(
-    name='sshit',
+    name='sshout',
     version='0.0.0',
     description='SSH it up.',
     long_description=open('README.rst').read(),
     author='Kenneth Reitz',
     author_email='me@kennethreitz.com',
-    url='https://github.com/kennethreitz/sshit',
-    packages= ['sshit'],
+    url='https://github.com/kennethreitz/sshout',
+    packages= ['sshout'],
     install_requires=required,
     license='ISC',
     classifiers=(
@@ -50,7 +50,8 @@ setup(
     ),
     entry_points = {
         'console_scripts': [
-            'sshit = sshit.cli:main'
+            'sshout = sshout.cli:main',
+            'tmpsshd = sshout.tmpsshd:main',
         ]
     }
 )

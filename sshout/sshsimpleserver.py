@@ -10,6 +10,7 @@ from twisted.conch.ssh import factory, userauth, connection, keys, session
 from twisted.internet import reactor, protocol, defer
 from twisted.python import log
 from zope.interface import implements
+from twisted.conch.unix import UnixSSHRealm
 import sys
 log.startLogging(sys.stderr)
 
@@ -106,14 +107,17 @@ class ExampleFactory(factory.SSHFactory):
 
 
 # portal = portal.Portal(ExampleRealm())
-from twisted.conch.unix import UnixSSHRealm
-portal = portal.Portal(UnixSSHRealm())
-passwdDB = checkers.InMemoryUsernamePasswordDatabaseDontUse()
-passwdDB.addUser('kreitz', 'password')
-portal.registerChecker(passwdDB)
-portal.registerChecker(InMemoryPublicKeyChecker())
-ExampleFactory.portal = portal
+def bootstrap(username):
+    from twisted.cred import portal
+
+    portal = portal.Portal(UnixSSHRealm())
+    passwdDB = checkers.InMemoryUsernamePasswordDatabaseDontUse()
+    passwdDB.addUser(username, 'password')
+    portal.registerChecker(passwdDB)
+    portal.registerChecker(InMemoryPublicKeyChecker())
+    ExampleFactory.portal = portal
 
 if __name__ == '__main__':
+    bootstrap('kreitz')
     reactor.listenTCP(5022, ExampleFactory())
     reactor.run()
